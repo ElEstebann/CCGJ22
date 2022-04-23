@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class LaserSource : MonoBehaviour
 {
+
     private LineRenderer line;
+    public int maxReflections = 10;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -12,29 +15,56 @@ public class LaserSource : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
        
         line.SetPosition(0,transform.position);
         //line.SetPosition(1,destination);
     }
+    */
 
-    void FixedUpdate()
+    void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right);
-        if(hit.collider)
+        line.SetPosition(0,transform.position);
+        Vector3 direction = transform.right;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+        
+        line.positionCount = 1;
+        Debug.DrawRay(transform.position, direction, Color.green);
+        
+            
+        
+        Ray ray = new Ray(transform.position, transform.forward);
+        for(int i = 1; i < maxReflections +1; i++)
         {
-            Debug.Log(hit.collider.tag);
-            if(hit.collider.tag == "Wall")
+            line.positionCount = i+1;
+            if(hit.collider)
             {
-                Vector3 collisionLocation = new Vector3(hit.collider.transform.position.x,transform.position.y,0);
-                line.SetPosition(1,collisionLocation);
+                line.SetPosition(i,hit.point);
+                if(hit.collider.tag != "Mirror")
+                {
+                    break;
+                }
+                
+                ray = new Ray(hit.point,Vector3.Reflect(ray.direction,hit.normal));
+                Debug.DrawRay(hit.point, Vector3.Reflect(ray.direction,hit.normal), Color.green);
+                hit = Physics2D.Raycast(hit.point,Vector3.Reflect(ray.direction,hit.normal));
+            }
+            else
+            {
+                
+                
+                line.SetPosition(i,ray.origin + ray.direction);
+                break;
             }
             
         }
-        else{
-            Vector3 destination = new Vector3(999999,transform.position.y,0);
-            line.SetPosition(1,destination);
-        }
+           
+            
     }
+        
+    
+
+  
 }
