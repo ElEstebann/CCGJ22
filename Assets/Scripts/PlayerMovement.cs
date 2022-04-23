@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         box = GetComponent<Collider2D>();
     }
-    public void Update()
+    public void FixedUpdate()
     {
         // check if the player is moving
         if (!isMoving && alive)
@@ -75,11 +75,11 @@ public class PlayerMovement : MonoBehaviour
                 #region update Direction
                 if (input.x == -1f)
                     currentDir = Direction.West;
-                if (input.x == 1f)
+                else if (input.x == 1f)
                     currentDir = Direction.East;
-                if (input.y == 1f)
+                else if (input.y == 1f)
                     currentDir = Direction.North;
-                if (input.y == -1f)
+                else if (input.y == -1f)
                     currentDir = Direction.South;
                 #endregion
  

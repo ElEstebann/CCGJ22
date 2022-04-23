@@ -55,7 +55,7 @@ public class Pushable : MonoBehaviour
         startPos = baseTransform.position;
         //baseTransform = baseTransform.parent.gameObject.transform;
     }
-    public void Update()
+    public void FixedUpdate()
     {
         // check if the player is moving
         if (!isMoving)
