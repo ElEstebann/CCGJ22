@@ -17,7 +17,7 @@ public class Pushable : MonoBehaviour
     public float moveDelay = 0.1f;
  
     // our player's direction
-    Direction currentDir = Direction.South;
+    //Direction currentDir = Direction.South;
  
     // a vector storing the input of our input-axis
     Vector2 input;
@@ -184,7 +184,7 @@ public class Pushable : MonoBehaviour
             //Debug.Log("Player touched me");
             
         }
-        if(collision.tag == "Mirror")
+        if(collision.tag == "Mirror" || collision.tag == "DoorTrigger" || collision.tag == "Wall")
         {
             //Debug.Log("Mirror hit");
             abortMove();

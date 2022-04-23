@@ -5,8 +5,10 @@ using UnityEngine;
 public class LaserSource : MonoBehaviour
 {
 
+    [SerializeField] private LayerMask layermask;
     private LineRenderer line;
     public int maxReflections = 1;
+    private DoorTrigger dtrigger;
     
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class LaserSource : MonoBehaviour
         Debug.DrawRay(transform.position, direction, Color.green);
         
         //Setup ray and raycast to detect collisions    
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,layermask);
         Ray2D ray = new Ray2D(transform.position, direction);
 
         //For every index in line.position:
@@ -67,7 +69,7 @@ public class LaserSource : MonoBehaviour
                 ray = new Ray2D(hitpoint,Vector3.Reflect(direction,hit.normal));
                 ray = new Ray2D(ray.origin + ray.direction*.1f,ray.direction);
                 Debug.DrawRay(ray.origin,ray.direction);
-                hit = Physics2D.Raycast(ray.origin,ray.direction);
+                hit = Physics2D.Raycast(ray.origin,ray.direction,layermask);
             }
             else
             {
@@ -91,11 +93,34 @@ public class LaserSource : MonoBehaviour
                 //Debug.Log("Hit Player");
                 PlayerMovement player = hit.collider.transform.gameObject.GetComponent<PlayerMovement>();
                 player.Kill();
+                if(dtrigger)
+                {
+                    dtrigger.Unactivate();
+                    dtrigger = null;
+                }
                 return true;
-                break;
+                //break;
             case "Wall":
+                if(dtrigger)
+                {
+                    dtrigger.Unactivate();
+                    dtrigger = null;
+                }
+                break;
+            case "DoorTrigger":
+                DoorTrigger activator = hit.collider.transform.gameObject.GetComponent<DoorTrigger>();
+                if(activator)
+                {
+                    dtrigger = activator;
+                    activator.Activate();
+                }
                 break;
             default:
+                if(dtrigger)
+                {
+                    dtrigger.Unactivate();
+                    dtrigger = null;
+                }
                 break;
         }
         return false;

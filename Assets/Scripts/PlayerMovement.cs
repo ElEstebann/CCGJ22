@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     float remainingMoveDelay = 0f;
     public bool alive = true;
     public bool invincible = false;
+    public bool stopped = false;
  
     // since we currently do not use any animation components we just use four
     // different sprites for our four directions
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     public void FixedUpdate()
     {
         // check if the player is moving
-        if (!isMoving && alive)
+        if (!isMoving && alive && !stopped)
         {
             // The player is currently not moving so check if there is keyinput
             input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
@@ -145,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         }
  
         // check if the player is currently in the moving state
-        if (isMoving && alive)
+        if (isMoving && alive && !stopped)
         {
             // check if the progress is still below 1f so the movement is still
             // going on
@@ -184,6 +185,10 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        else if(collision.tag == "Wall" || collision.tag == "DoorTrigger")
+        {
+            abortMove();
+        }
         
     }
 
@@ -195,6 +200,20 @@ public class PlayerMovement : MonoBehaviour
             alive = false;
             box.enabled = false;
         }
+    }
+
+    public void Stop()
+    {
+        Debug.Log("player stopped");
+        stopped = true;
+
+    }
+
+    public void Unstop()
+    {
+        Debug.Log("player unstopped");
+        stopped = false;
+
     }
 
     public void abortMove()

@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Wall
   - Mirror
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pushable
   - Water
   - UI
   - 
