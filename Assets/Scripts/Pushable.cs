@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
  
 // require SpriteRenderer for changing the player's sprite
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerMovement : MonoBehaviour
+public class Pushable : MonoBehaviour
 {
     // walkspeed in tiles per second
     public float walkSpeed = 3f;
@@ -36,8 +36,7 @@ public class PlayerMovement : MonoBehaviour
  
     // stores the time remaining before the player can move again
     float remainingMoveDelay = 0f;
-    public bool alive = true;
-    public bool invincible = false;
+    PlayerMovement player;
  
     // since we currently do not use any animation components we just use four
     // different sprites for our four directions
@@ -45,17 +44,23 @@ public class PlayerMovement : MonoBehaviour
     public Sprite eastSprite;
     public Sprite southSprite;
     public Sprite westSprite;
+    public Transform baseTransform;
+    
  
     private Collider2D box;
     public void Start()
     {
         box = GetComponent<Collider2D>();
+        player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerMovement>();
+        startPos = baseTransform.position;
+        //baseTransform = baseTransform.parent.gameObject.transform;
     }
     public void Update()
     {
         // check if the player is moving
-        if (!isMoving && alive)
+        if (!isMoving)
         {
+            /*
             // The player is currently not moving so check if there is keyinput
             input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
  
@@ -142,10 +147,11 @@ public class PlayerMovement : MonoBehaviour
                     progress = 0f;
                 }
             }
+            */
         }
  
         // check if the player is currently in the moving state
-        if (isMoving && alive)
+        if (isMoving)
         {
             // check if the progress is still below 1f so the movement is still
             // going on
@@ -157,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
  
                 // linearly interpolate between our start- and end-positions
                 // with the value of our progress which is in range of [0, 1]
-                transform.position = Vector3.Lerp(startPos, endPos, progress);
+                baseTransform.position = Vector3.Lerp(startPos, endPos, progress);
             }
             else
             {
@@ -166,15 +172,24 @@ public class PlayerMovement : MonoBehaviour
                 // by some tiny amount so in ordered to not accumulate errors
                 // we clamp our final position to our desired end-position
                 isMoving = false;
-                transform.position = endPos;
+                baseTransform.position = endPos;
+                startPos = endPos;
             }
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Player")
+        {
+            //Debug.Log("Player touched me");
+            
+        }
         if(collision.tag == "Mirror")
         {
             //Debug.Log("Mirror hit");
+            abortMove();
+            player.abortMove();
+            /*
             Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
             if(pushable)
             {
@@ -183,24 +198,45 @@ public class PlayerMovement : MonoBehaviour
                     abortMove();
                 }
             }
+            */
         }
-        
+        //Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
     }
 
-    public void Kill()
+    public bool push(Vector2 input)
     {
-        if(!invincible)
+        startPos = baseTransform.position;
+        endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
+
+        // we subtract 0.5 both in x and y direction to get the coordinates
+        // of the upper left corner of our player sprite and convert
+        // the floating point vector into an int vector for tile search
+        Vector3Int tilePosition = new Vector3Int((int)(endPos.x - 0.5f),
+                                                    (int)(endPos.y - 0.5f), 0);
+
+        // with our freshly calculated tile position of the tile where our
+        // player want to move to we can now check if there is in fact
+        // a tile at that position which we would collide with
+        // if there is no tile so the GetTile-function return null then
+        // we can go ahead and move towards our target
+        if (tilemap.GetTile(tilePosition) == null)
         {
-            Debug.Log("You Died!");
-            alive = false;
-            box.enabled = false;
+            // we set our moving variable to true and our progress
+            // towards the target position to 0
+            isMoving = true;
+            progress = 0f;
         }
+        else{
+
+            return false;
+        }
+        return true;
     }
 
     public void abortMove()
     {
         Debug.Log("move aborted");
-        transform.position = startPos;
+        baseTransform.position = startPos;
         isMoving = false;
         remainingMoveDelay = moveDelay;
 
@@ -208,7 +244,9 @@ public class PlayerMovement : MonoBehaviour
 }
  
 // small Enumeration to help us keep track of the player's direction more easyly
+/*
 enum Direction
 {
     North, East, South, West
 }
+*/

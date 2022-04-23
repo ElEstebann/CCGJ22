@@ -48,12 +48,18 @@ public class LaserSource : MonoBehaviour
                 line.SetPosition(i,hit.point);
                 if(hit.collider.tag != "Mirror")
                 {
-                    handleOtherCollision(hit);
-                    break;
+                    if(handleOtherCollision(hit))
+                    {
+                        continue;
+                    }
+                    else{
+                        break;
+                    }
+                    
                 }
                 
                 
-                Debug.Log(ray.direction);
+                //Debug.Log(ray.direction);
                 Vector3 hitpoint = hit.point;
                 direction = ray.direction;
                 
@@ -77,18 +83,22 @@ public class LaserSource : MonoBehaviour
     }
 
     //Handle Non-mirror collisions
-    void handleOtherCollision(RaycastHit2D hit)
+    bool handleOtherCollision(RaycastHit2D hit)
     {
         switch (hit.collider.tag)
         {
             case "Player":
-                Debug.Log("Hit Player");
+                //Debug.Log("Hit Player");
+                PlayerMovement player = hit.collider.transform.gameObject.GetComponent<PlayerMovement>();
+                player.Kill();
+                return true;
                 break;
             case "Wall":
                 break;
             default:
                 break;
         }
+        return false;
     }
         
     
