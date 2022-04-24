@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 471834330463342941, guid: b4c1dc8cbec06f14aa6eed5d058668ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 471834330463342947, guid: b4c1dc8cbec06f14aa6eed5d058668ab, type: 3}
       propertyPath: m_Name
       value: Laser Pushable Variant
@@ -426,6 +430,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591519, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
@@ -1116,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 471834330463342941, guid: b4c1dc8cbec06f14aa6eed5d058668ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 471834330463342947, guid: b4c1dc8cbec06f14aa6eed5d058668ab, type: 3}
       propertyPath: m_Name
       value: Laser Pushable Variant (1)
@@ -1131,15 +1143,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: nextScene
-      value: 
+      value: LevelTwo
       objectReference: {fileID: 0}
     - target: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: thisScene
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1221913014}
+    - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Next
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7371298116887271714, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7371298116887271714, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1187,6 +1215,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+--- !u!114 &1221913014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+  m_PrefabInstance: {fileID: 833944321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d233f82071f71d84a9cd3a13f0631bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1635200226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1883450872 stripped
 Transform:
