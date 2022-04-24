@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 3497217275017903927}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 134.5}
 --- !u!212 &1730036968254367238
 SpriteRenderer:
