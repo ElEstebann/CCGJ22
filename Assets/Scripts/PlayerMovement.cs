@@ -241,20 +241,26 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        else if(collision.tag == "Wall" || collision.tag == "DoorTrigger")
+        else if(collision.tag == "Wall")
         {
             abortMove();
+        }
+        else
+        {
+            //Idk what else you could collide with
         }
         
     }
 
     public void Kill()
     {
-        if(!invincible)
+        if(!invincible && alive)
         {
             Debug.Log("You Died!");
             alive = false;
             box.enabled = false;
+            GameController manager= GameObject.Find("GameManager").GetComponent<GameController>();
+            manager.Lose();
         }
     }
 
