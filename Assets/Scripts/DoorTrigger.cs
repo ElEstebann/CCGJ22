@@ -6,6 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     public Door door;
+    public bool activated = false;
     void Start()
     {
         door = GameObject.Find("Door").GetComponent<Door>();
@@ -19,17 +20,22 @@ public class DoorTrigger : MonoBehaviour
 
     public void Activate()
     {
-        if(door)
+        
+        if(door && !activated)
         {
             door.Activated(true);
+            activated = true;
         }
     }
 
     public void Unactivate()
     {
-        if(door)
+        if(door && activated)
         {
             door.Activated(false);
+            activated = false;
         }
+        
+        
     }
 }

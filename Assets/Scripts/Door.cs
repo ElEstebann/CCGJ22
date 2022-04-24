@@ -5,10 +5,13 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] public int requiredTriggers = 1;
+    public int currentTriggers = 0;
     Collider2D box;
     public Sprite openSprite;
     public Sprite closedSprite;
     public bool startOpen = false;
+    private bool isOpen = false;
     
     void Start()
     {
@@ -27,23 +30,47 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        Debug.Log("Door Opened");
-        box.enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+        if(!isOpen)
+        {
+            Debug.Log("Door Opened");
+            AudioManager.instance.PlayOneShot("DoorOpen");
+            box.enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+            isOpen = true;
+        }
     }
 
     public void Close()
     {
-        Debug.Log("Door Closed");
-        box.enabled = true;
-        gameObject.GetComponent<SpriteRenderer>().sprite = closedSprite;
+        if(isOpen)
+        {
+            Debug.Log("Door Closed");
+            AudioManager.instance.PlayOneShot("DoorClose");
+            box.enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = closedSprite;
+            isOpen = false;
+        }
     }
 
     public void Activated(bool door)
     {
-        if(!startOpen)
+        if(door)
         {
-            if(door)
+            currentTriggers++;
+            
+        }
+        else
+        {
+            currentTriggers--;
+        }
+        updateTriggers();
+    }
+
+    private void updateTriggers()
+    {
+        if(currentTriggers >= requiredTriggers)
+        {
+            if(!startOpen)
             {
                 Open();
             }
@@ -54,7 +81,7 @@ public class Door : MonoBehaviour
         }
         else
         {
-            if(door)
+            if(!startOpen)
             {
                 Close();
             }
@@ -64,4 +91,5 @@ public class Door : MonoBehaviour
             }
         }
     }
+    
 }
