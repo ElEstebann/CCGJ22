@@ -13,6 +13,7 @@ public class DoorTrigger : MonoBehaviour
         if(door)
         {
             door.requiredTriggers++;
+            Debug.Log("Added 1 to reqtriggers");
         }
     }
 

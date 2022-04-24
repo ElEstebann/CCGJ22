@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
     void Start()
     {
         box = GetComponent<Collider2D>();
+        requiredTriggers = 0;
+        Debug.Log(requiredTriggers);
         if(startOpen)
         {
             Open();
