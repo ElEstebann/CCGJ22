@@ -38,6 +38,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3309409586453763078, guid: 33eba2e6f6f6201439cc2e3d47aff9e4, type: 3}
+      propertyPath: fixedPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309409586453763081, guid: 33eba2e6f6f6201439cc2e3d47aff9e4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8340265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309409586453763081, guid: 33eba2e6f6f6201439cc2e3d47aff9e4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.028004259
+      objectReference: {fileID: 0}
     - target: {fileID: 3886378916858955670, guid: 33eba2e6f6f6201439cc2e3d47aff9e4, type: 3}
       propertyPath: m_Name
       value: Mirror Pushable (1) Variant
