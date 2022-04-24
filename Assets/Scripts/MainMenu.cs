@@ -7,11 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     public string firstLevel = "LevelOne";
+    public string menuSOng = "MainTheme";
     public Button creditsButton;
     public Button returnButton;
     void Start()
     {
-        AudioManager.instance.Play("MainTheme");
+        AudioManager.instance.Play(menuSOng);
     }
 
     // Update is called once per frame

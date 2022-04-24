@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &87400441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -235,6 +235,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 743d8c59dc1d061439115dea81d0a7bb, type: 3}
+--- !u!1 &472141996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4061293479079958982, guid: 743d8c59dc1d061439115dea81d0a7bb, type: 3}
+  m_PrefabInstance: {fileID: 1995248027}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 472141997}
+  m_Layer: 0
+  m_Name: 'MirrorNonPushable (1) (Missing Prefab with guid: 743d8c59dc1d061439115dea81d0a7bb)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472141997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4061293479079958983, guid: 743d8c59dc1d061439115dea81d0a7bb, type: 3}
+  m_PrefabInstance: {fileID: 1995248027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472141996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523769322
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstLevel: LevelOne
+  menuSOng: Menu
   creditsButton: {fileID: 204562745}
   returnButton: {fileID: 1489360029}
 --- !u!1 &585436967
@@ -806,7 +837,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &979668804 stripped
 RectTransform:
@@ -985,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1061244637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1009,6 +1040,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1150172837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4061293479079958982, guid: 743d8c59dc1d061439115dea81d0a7bb, type: 3}
+  m_PrefabInstance: {fileID: 319898648}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150172838}
+  m_Layer: 0
+  m_Name: 'MirrorNonPushable (Missing Prefab with guid: 743d8c59dc1d061439115dea81d0a7bb)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150172838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4061293479079958983, guid: 743d8c59dc1d061439115dea81d0a7bb, type: 3}
+  m_PrefabInstance: {fileID: 319898648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150172837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1255673624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1594,7 +1655,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1744831830
