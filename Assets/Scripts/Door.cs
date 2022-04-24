@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public int requiredTriggers = 1;
+    public int requiredTriggers = 0;
     public int currentTriggers = 0;
     Collider2D box;
     public Sprite openSprite;

@@ -10,6 +10,10 @@ public class DoorTrigger : MonoBehaviour
     void Start()
     {
         door = GameObject.Find("Door").GetComponent<Door>();
+        if(door)
+        {
+            door.requiredTriggers++;
+        }
     }
 
     // Update is called once per frame
