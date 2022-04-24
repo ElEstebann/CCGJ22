@@ -86,6 +86,9 @@ public class LaserSource : MonoBehaviour
                 break;
             case "Wall":
                 break;
+            case "ExplodingBarrel":
+                StartCoroutine(hit.collider.gameObject.GetComponent<ExplodingBarrel>().Explode());
+                break;
             default:
                 break;
         }

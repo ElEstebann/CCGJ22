@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour {
+public class UI : MonoBehaviour {
     public Dialogue dialogue;
     public Image portrait;
     public Sprite assistantPortrait;
@@ -11,9 +11,14 @@ public class DialogueManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         dialogue = transform.Find("Canvas").transform.Find("Dialogue").gameObject.GetComponent<Dialogue>();
-        portrait = transform.Find("Canvas").transform.Find("DialogueBox").transform.Find("Portrait").gameObject.GetComponent<Image>();
+        portrait = transform.Find("Canvas").transform.Find("Portrait").gameObject.GetComponent<Image>();
         WelcomeDialogue();
     }
+
+    public void PlayerDeath() {
+        transform.Find("Canvas").transform.Find("Filter").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+    }
+
 
     private void SetPortrait(string type) {
         if (type == "assistant") {
