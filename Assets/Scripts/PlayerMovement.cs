@@ -139,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 // is going to move to
                 startPos = transform.position;
                 endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
+                Debug.Log(endPos);
  
                 // we subtract 0.5 both in x and y direction to get the coordinates
                 // of the upper left corner of our player sprite and convert
@@ -228,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Mirror")
+        if(collision.tag == "Pushable")
         {
             //Debug.Log("Mirror hit");
             Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();

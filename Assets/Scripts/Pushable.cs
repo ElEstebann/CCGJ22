@@ -33,6 +33,8 @@ public class Pushable : MonoBehaviour
  
     // stores the progress of the current move in a range from 0f to 1f
     float progress;
+    public bool fixedPosition = false;
+    public bool canPushOthers = false;
  
     // stores the time remaining before the player can move again
     float remainingMoveDelay = 0f;
@@ -44,7 +46,7 @@ public class Pushable : MonoBehaviour
     public Sprite eastSprite;
     public Sprite southSprite;
     public Sprite westSprite;
-    public Transform baseTransform;
+    
     
  
     private Collider2D box;
@@ -52,7 +54,8 @@ public class Pushable : MonoBehaviour
     {
         box = GetComponent<Collider2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerMovement>();
-        startPos = baseTransform.position;
+        startPos = transform.position;
+        tilemap = GameObject.Find("Walls").GetComponent<Tilemap>();
         //baseTransform = baseTransform.parent.gameObject.transform;
     }
     public void FixedUpdate()
@@ -163,7 +166,7 @@ public class Pushable : MonoBehaviour
  
                 // linearly interpolate between our start- and end-positions
                 // with the value of our progress which is in range of [0, 1]
-                baseTransform.position = Vector3.Lerp(startPos, endPos, progress);
+                transform.position = Vector3.Lerp(startPos, endPos, progress);
             }
             else
             {
@@ -172,23 +175,39 @@ public class Pushable : MonoBehaviour
                 // by some tiny amount so in ordered to not accumulate errors
                 // we clamp our final position to our desired end-position
                 isMoving = false;
-                baseTransform.position = endPos;
+                transform.position = endPos;
                 startPos = endPos;
             }
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collision tag: " + collision.tag);
         if(collision.tag == "Player")
         {
             //Debug.Log("Player touched me");
             
         }
-        if(collision.tag == "Mirror" || collision.tag == "DoorTrigger" || collision.tag == "Wall")
+        else if(collision.tag == "Pushable")
         {
             //Debug.Log("Mirror hit");
-            abortMove();
-            player.abortMove();
+            if(canPushOthers)
+            {
+                Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
+                if(pushable)
+                {
+                    if(!pushable.push(input))
+                    {
+                        abortMove();
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("Push Aborted");
+                abortMove();
+                player.abortMove();
+            }
             /*
             Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
             if(pushable)
@@ -200,12 +219,22 @@ public class Pushable : MonoBehaviour
             }
             */
         }
+        else if( collision.tag == "DoorTrigger" || collision.tag == "Wall")
+        {
+            Debug.Log("Push Aborted");
+            abortMove();
+            player.abortMove();
+        }
         //Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
     }
 
     public bool push(Vector2 input)
     {
-        startPos = baseTransform.position;
+        if(fixedPosition)
+        {
+            return false;
+        }
+        startPos = transform.position;
         endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
 
         // we subtract 0.5 both in x and y direction to get the coordinates
@@ -236,7 +265,7 @@ public class Pushable : MonoBehaviour
     public void abortMove()
     {
         Debug.Log("move aborted");
-        baseTransform.position = startPos;
+        transform.position = startPos;
         isMoving = false;
         remainingMoveDelay = moveDelay;
 
