@@ -21,7 +21,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if(door)
         {
-            door.Open();
+            door.Activated(true);
         }
     }
 
@@ -29,7 +29,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if(door)
         {
-            door.Close();
+            door.Activated(false);
         }
     }
 }

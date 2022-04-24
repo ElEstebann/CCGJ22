@@ -66,11 +66,17 @@ public class PlayerMovement : MonoBehaviour
     public void FixedUpdate()
     {
         // check if the player is moving
-        if (!isMoving && alive && !stopped)
+        if (!isMoving && alive)
         {
+            if(!stopped)
+            {
             // The player is currently not moving so check if there is keyinput
-            input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
- 
+                input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+            }
+            else
+            {
+                input = new Vector2(0,0);
+            }
             // if there is input in x direction disable input in y direction to
             // disable diagonal movement
             if (input.x != 0f)
@@ -156,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         }
  
         // check if the player is currently in the moving state
-        if (isMoving && alive && !stopped)
+        if (isMoving && alive)
         {
             // check if the progress is still below 1f so the movement is still
             // going on

@@ -8,10 +8,15 @@ public class Door : MonoBehaviour
     Collider2D box;
     public Sprite openSprite;
     public Sprite closedSprite;
+    public bool startOpen = false;
     
     void Start()
     {
         box = GetComponent<Collider2D>();
+        if(startOpen)
+        {
+            Open();
+        }
     }
 
     // Update is called once per frame
@@ -32,5 +37,31 @@ public class Door : MonoBehaviour
         Debug.Log("Door Closed");
         box.enabled = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = closedSprite;
+    }
+
+    public void Activated(bool door)
+    {
+        if(!startOpen)
+        {
+            if(door)
+            {
+                Open();
+            }
+            else
+            {
+                Close();
+            }
+        }
+        else
+        {
+            if(door)
+            {
+                Close();
+            }
+            else
+            {
+                Open();
+            }
+        }
     }
 }
