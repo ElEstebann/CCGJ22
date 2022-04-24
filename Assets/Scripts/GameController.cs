@@ -38,9 +38,10 @@ public class GameController : MonoBehaviour
         if(!isPlayingSong)
         {
             isPlayingSong = true;
-            AudioManager.instance.PlayOneShot("MainTheme");
+            AudioManager.instance.Play("MainTheme");
 
         }
+        
     }
 
     // Update is called once per frame
@@ -63,6 +64,13 @@ public class GameController : MonoBehaviour
             
         }
         
+    }
+
+    void Awake(){
+        if(thisScene=="")
+        {
+            thisScene = SceneManager.GetActiveScene().name;
+        }
     }
     public void Win()
     {
