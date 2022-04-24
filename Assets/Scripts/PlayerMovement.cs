@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        else if(collision.tag == "Wall")
+        else if(collision.tag == "Wall" || collision.tag == "ExplodingBarrel")
         {
             abortMove();
         }
