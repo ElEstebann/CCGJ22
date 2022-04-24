@@ -219,7 +219,8 @@ public class Pushable : MonoBehaviour
             }
             */
         }
-        else if( collision.tag == "DoorTrigger" || collision.tag == "Wall")
+        else if( collision.tag == "DoorTrigger" || collision.tag == "Wall"
+            || collision.tag == "ExplodingBarrel")
         {
             Debug.Log("Push Aborted");
             abortMove();
