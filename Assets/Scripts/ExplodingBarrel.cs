@@ -28,7 +28,6 @@ public class ExplodingBarrel : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Debug.Log("Boom! You lose.");
             controller.Lose();
-            Destroy(gameObject);
         }
     }
 

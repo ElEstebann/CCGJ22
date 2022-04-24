@@ -7,12 +7,12 @@ public class UI : MonoBehaviour {
     public Dialogue dialogue;
     public Image portrait;
     public Sprite assistantPortrait;
-    public Sprite robotPortrait;
+    public Sprite SLAPortrait;
     // Start is called before the first frame update
     void Start() {
         dialogue = transform.Find("Canvas").transform.Find("Dialogue").gameObject.GetComponent<Dialogue>();
         portrait = transform.Find("Canvas").transform.Find("Portrait").gameObject.GetComponent<Image>();
-        WelcomeDialogue();
+        StartCoroutine(Level1Dialogue());
     }
 
     public void PlayerDeath() {
@@ -23,17 +23,20 @@ public class UI : MonoBehaviour {
     private void SetPortrait(string type) {
         if (type == "assistant") {
             portrait.sprite = assistantPortrait;
-        } else if (type == "robot") {
-            portrait.sprite = robotPortrait;
+        } else if (type == "SLAPortrait") {
+            portrait.sprite = SLAPortrait;
         }
     }
 
-        public IEnumerator Wait(int seconds) {
+    public IEnumerator Wait(int seconds) {
         yield return new WaitForSeconds(seconds);
     }
 
-    public void WelcomeDialogue() {
-        SetPortrait("assistant");
-        dialogue.PrintText("This is some sample dialogue!");
+    public IEnumerator Level1Dialogue() {
+        SetPortrait("SLAPortrait");
+        dialogue.PrintText("Hello! Thank you for enabling the Student Lab Companion. It seems that you are trapped in the Knox Laboratories Laser research facility. I will do my best to contact someone who can let you out.");
+        yield return new WaitForSeconds(15);
+        dialogue.PrintText("As it is an academic holiday and 3 in the morning, no one is available to let you out. Following emergency protocols, I will guide you out of the facility. Listen" +
+        "carefully and do exactly as I say.");
     }
 }

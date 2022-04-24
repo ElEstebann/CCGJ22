@@ -8,6 +8,7 @@ TagManager:
   - Mirror
   - DoorTrigger
   - Pushable
+  - ExplodingBarrel
   layers:
   - Default
   - TransparentFX
@@ -47,4 +48,7 @@ TagManager:
     locked: 0
   - name: Laser
     uniqueID: 1969218105
+    locked: 0
+  - name: Grid
+    uniqueID: 301959019
     locked: 0

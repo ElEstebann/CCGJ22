@@ -47,7 +47,7 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   portrait: {fileID: 0}
   assistantPortrait: {fileID: 21300000, guid: f13805319b93a4240927efd6f82dbbdc, type: 3}
-  robotPortrait: {fileID: 21300000, guid: f93283085795fcb4699e9ddc67ffc82c, type: 3}
+  SLAPortrait: {fileID: 21300000, guid: 7f90af06e47b2dd479f4bca5d01933ac, type: 3}
 --- !u!1 &165961842381855597
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1468865565837394763
 RectTransform:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
