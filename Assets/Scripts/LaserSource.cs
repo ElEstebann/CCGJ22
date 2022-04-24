@@ -7,7 +7,7 @@ public class LaserSource : MonoBehaviour
 
     [SerializeField] private LayerMask layermask;
     private LineRenderer line;
-    public int maxReflections = 1;
+    public int maxReflections = 10;
     private DoorTrigger dtrigger;
     
     // Start is called before the first frame update
