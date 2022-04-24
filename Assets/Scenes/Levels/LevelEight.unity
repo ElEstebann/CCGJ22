@@ -1870,6 +1870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door Trigger Pushable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
 --- !u!1 &1383178707
@@ -2289,10 +2293,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8511963257863149053, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+--- !u!1001 &1705017974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591518, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_Name
+      value: Door Trigger Pushable Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
 --- !u!1001 &1763853464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2420,6 +2481,10 @@ PrefabInstance:
     - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
       propertyPath: m_Name
       value: Door Trigger Pushable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
@@ -3832,6 +3897,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 702829910741417730, guid: 09271e42d8ad11a4788f74ad932996ed, type: 3}
+      propertyPath: requiredTriggers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 702829910741417740, guid: 09271e42d8ad11a4788f74ad932996ed, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3944,6 +4013,10 @@ PrefabInstance:
     - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
       propertyPath: m_Name
       value: Door Trigger Pushable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193206001268591521, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7a84a3f81c18f469b6cb95067399b4, type: 3}
