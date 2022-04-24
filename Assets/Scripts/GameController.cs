@@ -98,6 +98,14 @@ public class GameController : MonoBehaviour
         {
             loseOverlay.SetActive(true);
         }
+        if(player)
+        {
+            /* 
+             * Not needed if died via laser, but current lose path from barrel explosion 
+             * still allows player to move, so I put this here - Vincent
+             */
+            player.Stop();
+        }
         
         AudioManager.instance.Stop("MainTheme");
         string deathSound = "Death" + (1 + numDeaths%14).ToString();
