@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a995f46081330464497dceeac620ef7d, type: 3}
+  m_Sprite: {fileID: -6613309225141768949, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,18 +105,18 @@ MonoBehaviour:
   alive: 1
   invincible: 0
   stopped: 0
-  northSprite: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
-  eastSprite: {fileID: 21300000, guid: 89566c1784d0a394d9901b03b8c69c8a, type: 3}
-  southSprite: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
-  westSprite: {fileID: 21300000, guid: 7376ef89e482cf046907fe2126fd1f70, type: 3}
-  northWalk1: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
-  northWalk2: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
-  eastWalk1: {fileID: 21300000, guid: 8147408037c076d45b46f8b66159386f, type: 3}
-  eastWalk2: {fileID: 21300000, guid: c8bc82ce137410f4e8d458133a56912a, type: 3}
-  southWalk1: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
-  southWalk2: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
-  westWalk1: {fileID: 21300000, guid: e8dea9c75d62aa24998b9095da492f87, type: 3}
-  westWalk2: {fileID: 21300000, guid: a12febee5f3e8104fb9efada8c12d069, type: 3}
+  northSprite: {fileID: 3614843275697048932, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  eastSprite: {fileID: -6613309225141768949, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  southSprite: {fileID: 6518751059418621714, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  westSprite: {fileID: 5502224615867628319, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  northWalk1: {fileID: 4206826713124937593, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  northWalk2: {fileID: 6744350324053766096, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  eastWalk1: {fileID: -1104376827957350231, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  eastWalk2: {fileID: -3461980123041921101, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  southWalk1: {fileID: 4712258689082218837, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  southWalk2: {fileID: 8850667991790045977, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  westWalk1: {fileID: -8155250942540742128, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
+  westWalk2: {fileID: -928233717988843928, guid: b23a57199cd46144bbff8c3c306244ce, type: 3}
 --- !u!61 &7364027767737612591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
