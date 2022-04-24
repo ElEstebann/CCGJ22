@@ -164,3 +164,75 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: 13e1b2c6507b5ea4ba476fd158ffc805, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DoorClose
+    clip: {fileID: 8300000, guid: 364686e41ef4e5d47989e42e74101b65, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: 6756999aff14a244fa0fb4d5ddd0415c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level1Open
+    clip: {fileID: 8300000, guid: 6e4a4261720e0934b8fa3db6bdd6c1b9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level2Open
+    clip: {fileID: 8300000, guid: 1a316cecc6f54f6429f0a811effc2749, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level3Open
+    clip: {fileID: 8300000, guid: e49ddf6250f33d84ab01aa7101e014b5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level4Open
+    clip: {fileID: 8300000, guid: 8934b0b650ba3d0469e443d8996ff66c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level5Open
+    clip: {fileID: 8300000, guid: d0bd2bc2e776bb34cb1cc3f85cd9cc1d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level6Open
+    clip: {fileID: 8300000, guid: 885f9040a9c97664ebc38898233b7290, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level7Open
+    clip: {fileID: 8300000, guid: 8f2146d2bea7ed24e8b3271fbbf5f5d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Level8Open
+    clip: {fileID: 8300000, guid: c5a219b0770d6394184d2513e56f846b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ending
+    clip: {fileID: 8300000, guid: d26a44a724a27df4c88ec78c2ccf4f67, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
