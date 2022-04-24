@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 // is going to move to
                 startPos = transform.position;
                 endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
-                Debug.Log(endPos);
+                //Debug.Log(endPos);
  
                 // we subtract 0.5 both in x and y direction to get the coordinates
                 // of the upper left corner of our player sprite and convert

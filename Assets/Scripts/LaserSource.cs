@@ -94,11 +94,13 @@ public class LaserSource : MonoBehaviour
                 //Debug.Log("Hit Player");
                 PlayerMovement player = hit.collider.transform.gameObject.GetComponent<PlayerMovement>();
                 player.Kill();
+                /*
                 if(dtrigger)
                 {
                     dtrigger.Unactivate();
                     dtrigger = null;
                 }
+                */
                 return true;
                 //break;
             case "Wall":

@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
         
         AudioManager.instance.Stop("MainTheme");
         string deathSound = "Death" + (1 + numDeaths%14).ToString();
-        Debug.Log(deathSound);
+        //Debug.Log(deathSound);
         AudioManager.instance.Play(deathSound);
         numDeaths++;
         gameOver = true;
@@ -118,6 +118,8 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
+        AudioManager.instance.PlayOneShot("Button");
+        
         if(thisScene!="")
         {
             isPlayingSong = false;
@@ -127,6 +129,7 @@ public class GameController : MonoBehaviour
 
     public void Menu()
     {
+        AudioManager.instance.PlayOneShot("Button");
         if(menuScene!="")
         {
             SceneManager.LoadScene(menuScene);
@@ -135,6 +138,7 @@ public class GameController : MonoBehaviour
 
     public void Next()
     {
+        AudioManager.instance.PlayOneShot("Button");
         if(nextScene!="")
         {
             SceneManager.LoadScene(nextScene);
