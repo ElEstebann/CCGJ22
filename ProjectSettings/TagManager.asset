@@ -6,12 +6,13 @@ TagManager:
   tags:
   - Wall
   - Mirror
-  - ExplodingBarrel
+  - DoorTrigger
+  - Pushable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pushable
   - Water
   - UI
   - 
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Laser
+    uniqueID: 1969218105
     locked: 0

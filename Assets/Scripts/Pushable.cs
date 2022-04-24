@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
  
 // require SpriteRenderer for changing the player's sprite
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerMovement : MonoBehaviour
+public class Pushable : MonoBehaviour
 {
     // walkspeed in tiles per second
     public float walkSpeed = 3f;
@@ -17,11 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveDelay = 0.1f;
  
     // our player's direction
-    Direction currentDir = Direction.South;
-
-    // Variables to adjust animation, in terms of 0f-1f (progress)
-    public float altImageStart = 0.10f;
-    public float altImageEnd = 0.75f;
+    //Direction currentDir = Direction.South;
  
     // a vector storing the input of our input-axis
     Vector2 input;
@@ -37,46 +33,40 @@ public class PlayerMovement : MonoBehaviour
  
     // stores the progress of the current move in a range from 0f to 1f
     float progress;
+    public bool fixedPosition = false;
+    public bool canPushOthers = false;
  
     // stores the time remaining before the player can move again
     float remainingMoveDelay = 0f;
-    public bool alive = true;
-    public bool invincible = false;
-    public bool stopped = false;
+    PlayerMovement player;
  
-    // Sprite nonsense
+    // since we currently do not use any animation components we just use four
+    // different sprites for our four directions
     public Sprite northSprite;
     public Sprite eastSprite;
     public Sprite southSprite;
     public Sprite westSprite;
-    public Sprite northWalk1;
-    public Sprite northWalk2;
-    public Sprite eastWalk1;
-    public Sprite eastWalk2;
-    public Sprite southWalk1;
-    public Sprite southWalk2;
-    public Sprite westWalk1;
-    public Sprite westWalk2;
+    
+    
  
     private Collider2D box;
     public void Start()
     {
         box = GetComponent<Collider2D>();
+        player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerMovement>();
+        startPos = transform.position;
+        tilemap = GameObject.Find("Walls").GetComponent<Tilemap>();
+        //baseTransform = baseTransform.parent.gameObject.transform;
     }
     public void FixedUpdate()
     {
         // check if the player is moving
-        if (!isMoving && alive)
+        if (!isMoving)
         {
-            if(!stopped)
-            {
+            /*
             // The player is currently not moving so check if there is keyinput
-                input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
-            }
-            else
-            {
-                input = new Vector2(0,0);
-            }
+            input = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+ 
             // if there is input in x direction disable input in y direction to
             // disable diagonal movement
             if (input.x != 0f)
@@ -93,15 +83,16 @@ public class PlayerMovement : MonoBehaviour
                 #region update Direction
                 if (input.x == -1f)
                     currentDir = Direction.West;
-                else if (input.x == 1f)
+                if (input.x == 1f)
                     currentDir = Direction.East;
-                else if (input.y == 1f)
+                if (input.y == 1f)
                     currentDir = Direction.North;
-                else if (input.y == -1f)
+                if (input.y == -1f)
                     currentDir = Direction.South;
                 #endregion
-
-                // set idle sprite according to the direction
+ 
+                // since there is currently no further animation components we
+                // just set the sprite according to the direction
                 switch (currentDir)
                 {
                     case Direction.North:
@@ -139,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
                 // is going to move to
                 startPos = transform.position;
                 endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
-                Debug.Log(endPos);
  
                 // we subtract 0.5 both in x and y direction to get the coordinates
                 // of the upper left corner of our player sprite and convert
@@ -160,57 +150,19 @@ public class PlayerMovement : MonoBehaviour
                     progress = 0f;
                 }
             }
+            */
         }
  
         // check if the player is currently in the moving state
-        if (isMoving && alive)
+        if (isMoving)
         {
             // check if the progress is still below 1f so the movement is still
             // going on
             if (progress < 1f)
             {
-                // Jank ass animation
-                if (altImageStart < progress && progress < altImageEnd)
-                {
-                    switch (currentDir)
-                    {
-                        case Direction.North:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = northWalk2
-                    ;
-                            break;
-                        case Direction.East:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = eastWalk2;
-                            break;
-                        case Direction.South:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = southWalk2;
-                            break;
-                        case Direction.West:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = westWalk2;
-                            break;
-                    }
-                } else {
-                    switch (currentDir)
-                    {
-                        case Direction.North:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = northWalk1;
-                            break;
-                        case Direction.East:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = eastWalk1;
-                            break;
-                        case Direction.South:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = southWalk1;
-                            break;
-                        case Direction.West:
-                            gameObject.GetComponent<SpriteRenderer>().sprite = westWalk1;
-                            break;
-                    }
-                }
-
-
                 // increase our movement progress by our deltaTime times our
                 // above specified walkspeed
                 progress += Time.deltaTime * walkSpeed;
-                
  
                 // linearly interpolate between our start- and end-positions
                 // with the value of our progress which is in range of [0, 1]
@@ -224,14 +176,39 @@ public class PlayerMovement : MonoBehaviour
                 // we clamp our final position to our desired end-position
                 isMoving = false;
                 transform.position = endPos;
+                startPos = endPos;
             }
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Pushable")
+        Debug.Log("Collision tag: " + collision.tag);
+        if(collision.tag == "Player")
+        {
+            //Debug.Log("Player touched me");
+            
+        }
+        else if(collision.tag == "Pushable")
         {
             //Debug.Log("Mirror hit");
+            if(canPushOthers)
+            {
+                Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
+                if(pushable)
+                {
+                    if(!pushable.push(input))
+                    {
+                        abortMove();
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("Push Aborted");
+                abortMove();
+                player.abortMove();
+            }
+            /*
             Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
             if(pushable)
             {
@@ -240,36 +217,49 @@ public class PlayerMovement : MonoBehaviour
                     abortMove();
                 }
             }
+            */
         }
-        else if(collision.tag == "Wall" || collision.tag == "DoorTrigger")
+        else if( collision.tag == "DoorTrigger" || collision.tag == "Wall")
         {
+            Debug.Log("Push Aborted");
             abortMove();
+            player.abortMove();
         }
-        
+        //Pushable pushable= collision.transform.gameObject.GetComponent<Pushable>();
     }
 
-    public void Kill()
+    public bool push(Vector2 input)
     {
-        if(!invincible)
+        if(fixedPosition)
         {
-            Debug.Log("You Died!");
-            alive = false;
-            box.enabled = false;
+            return false;
         }
-    }
+        startPos = transform.position;
+        endPos = new Vector3(startPos.x + input.x, startPos.y + input.y, startPos.z);
 
-    public void Stop()
-    {
-        Debug.Log("player stopped");
-        stopped = true;
+        // we subtract 0.5 both in x and y direction to get the coordinates
+        // of the upper left corner of our player sprite and convert
+        // the floating point vector into an int vector for tile search
+        Vector3Int tilePosition = new Vector3Int((int)(endPos.x - 0.5f),
+                                                    (int)(endPos.y - 0.5f), 0);
 
-    }
+        // with our freshly calculated tile position of the tile where our
+        // player want to move to we can now check if there is in fact
+        // a tile at that position which we would collide with
+        // if there is no tile so the GetTile-function return null then
+        // we can go ahead and move towards our target
+        if (tilemap.GetTile(tilePosition) == null)
+        {
+            // we set our moving variable to true and our progress
+            // towards the target position to 0
+            isMoving = true;
+            progress = 0f;
+        }
+        else{
 
-    public void Unstop()
-    {
-        Debug.Log("player unstopped");
-        stopped = false;
-
+            return false;
+        }
+        return true;
     }
 
     public void abortMove()
@@ -283,7 +273,9 @@ public class PlayerMovement : MonoBehaviour
 }
  
 // small Enumeration to help us keep track of the player's direction more easyly
+/*
 enum Direction
 {
     North, East, South, West
 }
+*/
