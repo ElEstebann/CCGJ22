@@ -120,6 +120,7 @@ public class GameController : MonoBehaviour
     {
         if(thisScene!="")
         {
+            isPlayingSong = false;
             SceneManager.LoadScene(thisScene);
         }
     }
