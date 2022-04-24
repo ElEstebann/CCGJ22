@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: nextScene
       value: LevelFive
       objectReference: {fileID: 0}
+    - target: {fileID: 6458201088785965670, guid: b3a497f4b0066c4468ccbb38223c1e5a, type: 3}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6458201088785965671, guid: b3a497f4b0066c4468ccbb38223c1e5a, type: 3}
       propertyPath: m_RootOrder
       value: 3

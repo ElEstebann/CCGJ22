@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
     public static bool isPlayingSong = false;
     private static int numDeaths = 0;
+    [SerializeField] public int currentLevel = 0;
     void Start()
     {
         winOverlay = GameObject.Find("Win Overlay");
@@ -43,6 +44,8 @@ public class GameController : MonoBehaviour
         }
         
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -71,6 +74,13 @@ public class GameController : MonoBehaviour
         {
             thisScene = SceneManager.GetActiveScene().name;
         }
+        
+        if(currentLevel > 0)
+        {
+            string intro = "Level" + currentLevel.ToString() + "Open";
+            AudioManager.instance.PlayOneShot(intro);
+        }
+        
     }
     public void Win()
     {
