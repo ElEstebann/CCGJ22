@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7272719379013156911}
   - component: {fileID: 7053479010568680858}
+  - component: {fileID: 1789837464663846707}
   m_Layer: 0
   m_Name: LaserSource
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &1789837464663846707
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304141368525053602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.009170085, y: -0.07448394}
+  - {x: 0.3509298, y: -0.09525601}
+  - {x: 0.3096504, y: -0.10016147}
+  - {x: 0.30833393, y: -0.12554282}
+  - {x: 0.25132054, y: -0.12645873}
+  - {x: 0.25307384, y: -0.18250978}
+  - {x: 0.3462455, y: -0.19033636}
+  - {x: 0.34764993, y: -0.21761802}
+  - {x: 0.3781619, y: -0.21691969}
+  - {x: 0.3846034, y: -0.24689922}
+  - {x: 0.404323, y: -0.2590942}
+  - {x: 0.40885675, y: -0.31271535}
+  - {x: 0.3831711, y: -0.3145132}
+  - {x: 0.38523218, y: -0.34042656}
+  - {x: 0.34483117, y: -0.34190765}
+  - {x: 0.34466437, y: -0.37466645}
+  - {x: -0.39968073, y: -0.36883318}
+  - {x: -0.4048717, y: -0.34697223}
+  - {x: -0.43589282, y: -0.33992392}
+  - {x: -0.43770728, y: -0.31559688}
+  - {x: -0.46740228, y: -0.31055307}
+  - {x: -0.4627315, y: -0.25129896}
+  - {x: -0.43954724, y: -0.24527189}
+  - {x: -0.43480542, y: -0.21367902}
+  - {x: -0.4071246, y: -0.21446313}
+  - {x: -0.39989468, y: -0.1831342}
+  - {x: -0.37176943, y: -0.18279536}
+  - {x: -0.37154981, y: 0.18947197}
+  - {x: -0.3427949, y: 0.18973349}
+  - {x: -0.3418613, y: 0.21808283}
+  - {x: 0.22291167, y: 0.21819177}
+  - {x: 0.22422396, y: 0.18791322}
+  - {x: 0.25502938, y: 0.1863925}
+  - {x: 0.25320184, y: 0.128349}
+  - {x: 0.31131437, y: 0.12480059}
+  - {x: 0.31666875, y: 0.100046284}
+  - {x: 0.34597337, y: 0.09770113}
+  - {x: 0.3431608, y: 0.06387519}
+  - {x: -0.0049974034, y: 0.07320239}
+  - {x: -0.011838362, y: -0.1260497}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &5767881149474178600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,6 +199,10 @@ PrefabInstance:
       propertyPath: nodePrefab
       value: 
       objectReference: {fileID: 2099803291558319103, guid: e68af0ff81e2d4649bb02552f2bc2d4a, type: 3}
+    - target: {fileID: 2099803291558319103, guid: e68af0ff81e2d4649bb02552f2bc2d4a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2099803291558319103, guid: e68af0ff81e2d4649bb02552f2bc2d4a, type: 3}
       propertyPath: m_Name
       value: Laser

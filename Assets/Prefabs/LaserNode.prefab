@@ -147,7 +147,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 62
-  maxReflections: 1
+  maxReflections: 20
 --- !u!20 &2099803291558319076
 Camera:
   m_ObjectHideFlags: 0

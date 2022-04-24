@@ -29,7 +29,7 @@ public class LaserSource : MonoBehaviour
     void FixedUpdate()
     {
         //Set first line point at transform position
-        line.SetPosition(0,transform.position);
+        
         Vector3 direction = transform.right;
         line.positionCount = 1;
         Debug.DrawRay(transform.position, direction, Color.green);
@@ -37,6 +37,7 @@ public class LaserSource : MonoBehaviour
         //Setup ray and raycast to detect collisions    
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,layermask);
         Ray2D ray = new Ray2D(transform.position, direction);
+        line.SetPosition(0,ray.origin+ray.direction*.4f);
 
         //For every index in line.position:
             //Set next position at collision
