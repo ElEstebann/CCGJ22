@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
  
     // our player's direction
     Direction currentDir = Direction.South;
+
+    // Variables to adjust animation, in terms of 0f-1f (progress)
+    public float altImageStart = 0.10f;
+    public float altImageEnd = 0.75f;
  
     // a vector storing the input of our input-axis
     Vector2 input;
@@ -40,12 +44,19 @@ public class PlayerMovement : MonoBehaviour
     public bool invincible = false;
     public bool stopped = false;
  
-    // since we currently do not use any animation components we just use four
-    // different sprites for our four directions
+    // Sprite nonsense
     public Sprite northSprite;
     public Sprite eastSprite;
     public Sprite southSprite;
     public Sprite westSprite;
+    public Sprite northWalk1;
+    public Sprite northWalk2;
+    public Sprite eastWalk1;
+    public Sprite eastWalk2;
+    public Sprite southWalk1;
+    public Sprite southWalk2;
+    public Sprite westWalk1;
+    public Sprite westWalk2;
  
     private Collider2D box;
     public void Start()
@@ -83,9 +94,8 @@ public class PlayerMovement : MonoBehaviour
                 else if (input.y == -1f)
                     currentDir = Direction.South;
                 #endregion
- 
-                // since there is currently no further animation components we
-                // just set the sprite according to the direction
+
+                // set idle sprite according to the direction
                 switch (currentDir)
                 {
                     case Direction.North:
@@ -152,9 +162,48 @@ public class PlayerMovement : MonoBehaviour
             // going on
             if (progress < 1f)
             {
+                // Jank ass animation
+                if (altImageStart < progress && progress < altImageEnd)
+                {
+                    switch (currentDir)
+                    {
+                        case Direction.North:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = northWalk2
+                    ;
+                            break;
+                        case Direction.East:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = eastWalk2;
+                            break;
+                        case Direction.South:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = southWalk2;
+                            break;
+                        case Direction.West:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = westWalk2;
+                            break;
+                    }
+                } else {
+                    switch (currentDir)
+                    {
+                        case Direction.North:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = northWalk1;
+                            break;
+                        case Direction.East:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = eastWalk1;
+                            break;
+                        case Direction.South:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = southWalk1;
+                            break;
+                        case Direction.West:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = westWalk1;
+                            break;
+                    }
+                }
+
+
                 // increase our movement progress by our deltaTime times our
                 // above specified walkspeed
                 progress += Time.deltaTime * walkSpeed;
+                
  
                 // linearly interpolate between our start- and end-positions
                 // with the value of our progress which is in range of [0, 1]

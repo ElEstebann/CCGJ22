@@ -715,10 +715,22 @@ MonoBehaviour:
   walkSpeed: 3
   tilemap: {fileID: 365979818}
   moveDelay: 0.15
+  altImageStart: 0.1
+  altImageEnd: 0.75
+  alive: 1
+  invincible: 0
   northSprite: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
   eastSprite: {fileID: 21300000, guid: 89566c1784d0a394d9901b03b8c69c8a, type: 3}
   southSprite: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
   westSprite: {fileID: 21300000, guid: 7376ef89e482cf046907fe2126fd1f70, type: 3}
+  northWalk1: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
+  northWalk2: {fileID: 21300000, guid: 9089c7255fb866f4ab9f255b2edc7956, type: 3}
+  eastWalk1: {fileID: 21300000, guid: 8147408037c076d45b46f8b66159386f, type: 3}
+  eastWalk2: {fileID: 21300000, guid: c8bc82ce137410f4e8d458133a56912a, type: 3}
+  southWalk1: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
+  southWalk2: {fileID: 21300000, guid: dd65cdb8e510af341b5f81e4aabc9804, type: 3}
+  westWalk1: {fileID: 21300000, guid: 7376ef89e482cf046907fe2126fd1f70, type: 3}
+  westWalk2: {fileID: 21300000, guid: 7376ef89e482cf046907fe2126fd1f70, type: 3}
 --- !u!1 &1383178707
 GameObject:
   m_ObjectHideFlags: 0
