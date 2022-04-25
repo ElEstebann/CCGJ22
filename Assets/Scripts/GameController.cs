@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
     public static bool isPlayingSong = false;
     private static int numDeaths = 0;
+    private static string intro;
     [SerializeField] public int currentLevel = 0;
     void Start()
     {
@@ -40,7 +41,6 @@ public class GameController : MonoBehaviour
         {
             isPlayingSong = true;
             AudioManager.instance.Play("MainTheme");
-
         }
         
     }
@@ -77,8 +77,8 @@ public class GameController : MonoBehaviour
         
         if(currentLevel > 0)
         {
-            string intro = "Level" + currentLevel.ToString() + "Open";
-            AudioManager.instance.PlayOneShot(intro);
+            intro = "Level" + currentLevel.ToString() + "Open";
+            AudioManager.instance.Play(intro);
         }
         
     }
@@ -94,6 +94,7 @@ public class GameController : MonoBehaviour
         }
         AudioManager.instance.Stop("MainTheme");
         AudioManager.instance.Play("Win");
+        AudioManager.instance.Stop(intro);
         isPlayingSong = false;
         gameOver =true;
     }
@@ -118,6 +119,7 @@ public class GameController : MonoBehaviour
         }
         
         AudioManager.instance.Stop("MainTheme");
+        AudioManager.instance.Stop(intro);
         string deathSound = "Death" + (1 + numDeaths%14).ToString();
         //Debug.Log(deathSound);
         AudioManager.instance.Play(deathSound);
@@ -129,7 +131,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         AudioManager.instance.PlayOneShot("Button");
-        
+        AudioManager.instance.Stop(intro);
         if(thisScene!="")
         {
             isPlayingSong = false;
@@ -140,15 +142,19 @@ public class GameController : MonoBehaviour
     public void Menu()
     {
         AudioManager.instance.PlayOneShot("Button");
+        AudioManager.instance.Stop("MainTheme");
+        AudioManager.instance.Stop(intro);
         if(menuScene!="")
         {
             SceneManager.LoadScene(menuScene);
         }
+            
     }
 
     public void Next()
     {
         AudioManager.instance.PlayOneShot("Button");
+        AudioManager.instance.Stop(intro);
         if(nextScene!="")
         {
             SceneManager.LoadScene(nextScene);
@@ -158,6 +164,7 @@ public class GameController : MonoBehaviour
 
     public void Pause()
     {
+        AudioManager.instance.Pause(intro,true);
         if(pauseOverlay)
         {
             pauseOverlay.SetActive(true);
@@ -173,6 +180,7 @@ public class GameController : MonoBehaviour
     }
     public void Unpause()
     {
+        AudioManager.instance.Pause(intro,false);
         if(pauseOverlay)
         {
             pauseOverlay.SetActive(false);
