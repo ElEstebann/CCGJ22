@@ -30,6 +30,8 @@ public class MainMenu : MonoBehaviour
     {
         
         SceneManager.LoadScene(firstLevel);
+        AudioManager.instance.Stop(menuSOng);
+
     }
     public void Exit()
     {
