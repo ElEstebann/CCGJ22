@@ -1164,6 +1164,10 @@ PrefabInstance:
       propertyPath: nextScene
       value: LevelThree
       objectReference: {fileID: 0}
+    - target: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: currentLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

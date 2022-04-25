@@ -511,6 +511,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 337865398}
     m_Modifications:
+    - target: {fileID: 8617738979313437782, guid: 2e7b08bc1412fb543859e896647c4a43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617738979313437782, guid: 2e7b08bc1412fb543859e896647c4a43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3497217275017903880, guid: a3befed5ca573624ba1ea77e2ecb5994, type: 3}
       propertyPath: m_Name
       value: MirrorNonPushable (2)
@@ -558,14 +566,6 @@ PrefabInstance:
     - target: {fileID: 3497217275017903927, guid: a3befed5ca573624ba1ea77e2ecb5994, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617738979313437782, guid: 2e7b08bc1412fb543859e896647c4a43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617738979313437782, guid: 2e7b08bc1412fb543859e896647c4a43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3befed5ca573624ba1ea77e2ecb5994, type: 3}
@@ -1227,6 +1227,10 @@ PrefabInstance:
     - target: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: nextScene
       value: LevelFive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360961940383136223, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
+      propertyPath: currentLevel
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1360961942029037423, guid: cc70275670e2ba04eb671f1ff34c68da, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
